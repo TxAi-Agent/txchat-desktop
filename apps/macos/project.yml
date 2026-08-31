@@ -1,0 +1,93 @@
+name: SpekWrite
+
+options:
+  deploymentTarget:
+    macOS: "14.0"
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+
+targets:
+  SpekWrite:
+    type: application
+    platform: macOS
+    sources:
+      - path: SpekWrite
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: org.example.txchat
+        PRODUCT_NAME: txchat
+        PRODUCT_MODULE_NAME: SpekWrite
+        EXECUTABLE_NAME: SpekWrite
+        WRAPPER_NAME: txchat.app
+        MARKETING_VERSION: 1.0.0
+        CURRENT_PROJECT_VERSION: 1
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        GENERATE_INFOPLIST_FILE: NO
+        INFOPLIST_FILE: SpekWrite/Info.plist
+        SPEKWRITE_API_BASE_URL: ""
+        SPEKWRITE_REALTIME_BASE_URL: ""
+        ENABLE_HARDENED_RUNTIME: YES
+        ENABLE_APP_SANDBOX: NO
+        CODE_SIGN_ENTITLEMENTS: SpekWrite/SpekWrite.entitlements
+      configs:
+        Release:
+          ARCHS: arm64
+          ONLY_ACTIVE_ARCH: NO
+  SpekWriteTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: SpekWriteTests/AppCoordinatorTests.swift
+      - path: SpekWriteTests/AppDependenciesTests.swift
+      - path: SpekWriteTests/CustomAIEndpointCatalogTests.swift
+      - path: SpekWriteTests/CustomAIProviderServiceTests.swift
+      - path: SpekWriteTests/DiagnosticModelsTests.swift
+      - path: SpekWriteTests/DiagnosticReportCoordinatorTests.swift
+      - path: SpekWriteTests/DiagnosticReportUITests.swift
+      - path: SpekWriteTests/DiagnosticRuntimeTests.swift
+      - path: SpekWriteTests/DiagnosticStoreTests.swift
+      - path: SpekWriteTests/DiagnosticTestFixture.swift
+      - path: SpekWriteTests/DictationStateReducerTests.swift
+      - path: SpekWriteTests/DictionaryMarkdownCodecTests.swift
+      - path: SpekWriteTests/DictionaryReplacerTests.swift
+      - path: SpekWriteTests/DictionarySettingsCoordinatorTests.swift
+      - path: SpekWriteTests/DictionaryStoreTests.swift
+      - path: SpekWriteTests/HardwareSupportTests.swift
+      - path: SpekWriteTests/LaunchAtLoginRuntimeTests.swift
+      - path: SpekWriteTests/MicrophoneCalibrationStoreTests.swift
+      - path: SpekWriteTests/ProductConfigurationTests.swift
+      - path: SpekWriteTests/ProductShortcutEditorModelTests.swift
+      - path: SpekWriteTests/ProductShortcutMonitorTests.swift
+      - path: SpekWriteTests/ProductShortcutTests.swift
+      - path: SpekWriteTests/ProductWindowControllerTests.swift
+      - path: SpekWriteTests/ProductionDictationRuntimeTests.swift
+      - path: SpekWriteTests/ProductionInputAdapterTests.swift
+      - path: SpekWriteTests/PublicLocalAuthenticationServiceTests.swift
+      - path: SpekWriteTests/PublicLocalBootstrapCredentialStoreTests.swift
+      - path: SpekWriteTests/PublicLocalRuntimeTests.swift
+      - path: SpekWriteTests/PublicLocalStreamingClientTests.swift
+      - path: SpekWriteTests/RealtimeDictationProtocolTests.swift
+      - path: SpekWriteTests/StreamingDictationClientTests.swift
+      - path: SpekWriteTests/TransientPasteInserterTests.swift
+      - path: SpekWriteTests/TxChatDistanceGateTests.swift
+      - path: SpekWriteTests/TxChatInputDeviceProviderTests.swift
+      - path: SpekWriteTests/TxChatMicrophoneCalibrationServiceTests.swift
+      - path: SpekWriteTests/TxChatPublicLocalContractTests.swift
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/txchat.app/Contents/MacOS/SpekWrite"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+    dependencies:
+      - target: SpekWrite
+
+schemes:
+  SpekWrite:
+    build:
+      targets:
+        SpekWrite: all
+    test:
+      targets:
+        - SpekWriteTests

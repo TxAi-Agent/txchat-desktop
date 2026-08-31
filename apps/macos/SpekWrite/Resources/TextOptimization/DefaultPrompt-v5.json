@@ -1,0 +1,6 @@
+{
+  "version": "public-default-v1",
+  "sha256": "c24a3933bfdc1d6a561d4ed6e010044964f2406b1a7b895a3c8fb2a07445096e",
+  "utf8Bytes": 167,
+  "content": "[prompt:public-default-v1]\nReturn the input text with only spelling and punctuation corrections. Preserve meaning, facts, and language. Output only the corrected text."
+}

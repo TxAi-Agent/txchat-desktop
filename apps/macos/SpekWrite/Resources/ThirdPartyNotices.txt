@@ -1,0 +1,17 @@
+txchat Third-Party Notices
+==========================
+
+Bundled font
+============
+
+Noto Sans CJK SC variable font, Sans2.004
+https://github.com/notofonts/noto-cjk/tree/Sans2.004
+
+The font is distributed under the SIL Open Font License, Version 1.1.
+The complete license is bundled as Fonts/OFL-NotoSansSC.txt.
+
+Trademark notice
+================
+
+Third-party product and service names referenced by source code belong to
+their respective owners. No third-party logos or brand artwork are bundled.

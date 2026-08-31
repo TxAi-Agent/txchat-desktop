@@ -1,0 +1,36 @@
+name: macOS CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Generate project
+        run: xcodegen generate --spec apps/macos/project.yml
+      - name: Build unsigned arm64 Release
+        run: >-
+          xcodebuild build
+          -project apps/macos/SpekWrite.xcodeproj
+          -scheme SpekWrite
+          -configuration Release
+          -destination 'platform=macOS,arch=arm64'
+          CODE_SIGNING_ALLOWED=NO
+      - name: Test Debug
+        run: >-
+          xcodebuild test
+          -project apps/macos/SpekWrite.xcodeproj
+          -scheme SpekWrite
+          -configuration Debug
+          -destination 'platform=macOS,arch=arm64'
+          CODE_SIGNING_ALLOWED=NO

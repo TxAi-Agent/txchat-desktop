@@ -1,0 +1,15 @@
+{
+  "images": [
+    {
+      "filename": "TxChat-HUD-High-Contrast.svg",
+      "idiom": "universal"
+    }
+  ],
+  "info": {
+    "author": "xcode",
+    "version": 1
+  },
+  "properties": {
+    "preserves-vector-representation": true
+  }
+}
